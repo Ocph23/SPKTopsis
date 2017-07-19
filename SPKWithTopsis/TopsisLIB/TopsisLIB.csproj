@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F350A6E1-D937-405D-AAF6-9AF7E9BB83F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TopsisLIB</RootNamespace>
+    <AssemblyName>TopsisLIB</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OcphDAL.1.0.1\lib\net45\DAL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Criterias\CameraBackModel.cs" />
+    <Compile Include="Criterias\CameraFrontModel.cs" />
+    <Compile Include="Criterias\HardiskModel.cs" />
+    <Compile Include="Criterias\LcdModel.cs" />
+    <Compile Include="Criterias\OsModel.cs" />
+    <Compile Include="Criterias\PriceModel.cs" />
+    <Compile Include="Criterias\ProccesorModel.Cs" />
+    <Compile Include="Criterias\RamModel.cs" />
+    <Compile Include="Criterias\StoregeModel.cs" />
+    <Compile Include="DataCollections\ComputerCollections.cs" />
+    <Compile Include="DataCollections\HandphoneCollection.cs" />
+    <Compile Include="DataCollections\IDataCollection.cs" />
+    <Compile Include="DataCollections\LoginDataAccess.cs" />
+    <Compile Include="DataCollections\PhotoCollection.cs" />
+    <Compile Include="DataCollections\ProducentCollections.cs" />
+    <Compile Include="DataCollections\ProducentEnumerator.cs" />
+    <Compile Include="EnumCollection.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="PhoneDataLayer.cs" />
+    <Compile Include="DataLayer.cs" />
+    <Compile Include="DataProccessPhoneModel.cs" />
+    <Compile Include="DataProccessModel.cs" />
+    <Compile Include="DataProccess.cs" />
+    <Compile Include="Helpers\BaseNotifyProperty.cs" />
+    <Compile Include="Models\Alternatif.cs" />
+    <Compile Include="Models\Bobot.cs" />
+    <Compile Include="Models\computer.cs" />
+    <Compile Include="Models\CriteriaBase.cs" />
+    <Compile Include="Models\handphone.cs" />
+    <Compile Include="Models\Prefensi.cs" />
+    <Compile Include="Models\producent.cs" />
+    <Compile Include="OcphDbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

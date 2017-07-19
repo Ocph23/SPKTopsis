@@ -1,0 +1,129 @@
+﻿<Window x:Class="SPKWithTopsis.Forms.HandphoneSearch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPKWithTopsis.Forms"
+        mc:Ignorable="d"
+        Title="Pencarian Handphone" Height="753.2" Width="1275.4">
+    <Grid Margin="15" >
+        <Grid.Background>
+            <ImageBrush ImageSource="/SPKWithTopsis;component/Images/prediksi-desain-iphone-7_25-03-16-18-21.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="275.2"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel  Grid.Row="0" Margin="10,10,10.2,0" VerticalAlignment="Top" Height="244">
+            <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Top" Width="125">
+                <Label Height="25" Margin="3" Content="Produsen"/>
+                <Label Height="25" Margin="3" Content="Operasi Sistem"/>
+                <Label Height="25" Margin="3" Content="R A M"/>
+                <Label Height="25" Margin="3" Content="Internal Storege"/>
+                <Label Height="25" Margin="3" Content="Camera Depan"/>
+                <Label Height="25" Margin="3" Content="Camera Belakang"/>
+                <Label Height="25" Margin="3" Content="Harga"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Top" Width="194">
+                <ComboBox ItemsSource="{Binding ProducentView}" SelectedItem="{Binding ProducentSelected}" DisplayMemberPath="Name" SelectedValue="{Binding ProducentId}" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+                <ComboBox ItemsSource="{Binding OsView}" SelectedItem="{Binding OsSelected}" SelectedValue="{Binding Os}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+                <ComboBox ItemsSource="{Binding MemoryView}" SelectedItem="{Binding MemorySelected}" SelectedValue="{Binding Memory}"  DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+                <ComboBox ItemsSource="{Binding StorageView}" SelectedItem="{Binding StorageSelected}" DisplayMemberPath="Name" SelectedValue="{Binding Storage}" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+                <ComboBox ItemsSource="{Binding CameraFrontView}" SelectedItem="{Binding CameraFrontSelected}" DisplayMemberPath="Name" SelectedValue="{Binding CameraFront}" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+                <ComboBox ItemsSource="{Binding CameraBackView}" SelectedItem="{Binding CameraBackSelected}" DisplayMemberPath="Name" SelectedValue="{Binding CameraBack}" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+                <TextBox Height="25" Margin="3" Text="{Binding Price}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Width="595">
+                <Button x:Name="button" Command="{Binding SearchCommand}"   Content="Cari" VerticalAlignment="Center" Height="127" Margin="225,50,0,0" HorizontalAlignment="Left" Width="146" Background="#FFDEE7E1"/>
+            </StackPanel>
+
+        </WrapPanel>
+        <StackPanel  Grid.Row="1" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="179*"/>
+                    <ColumnDefinition Width="133*"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid Grid.Column="0" x:Name="dataGrid"  
+                  ItemsSource="{Binding SourceView}" SelectedItem="{Binding SelectedItem}"
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="10,10,9.4,10.2" RowHeight="28" Background="{x:Null}" ColumnHeaderHeight="35" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding ProducentName}" Header="Merek" Width="120"/>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Nama" Width="120"/>
+                        <DataGridTextColumn Binding="{Binding Os}" Header="OS" Width="120"/>
+                        <DataGridTextColumn Binding="{Binding Memory}" Header="RAM" Width="120"/>
+
+                        <DataGridTextColumn Binding="{Binding Score}" Header="Score" Width="120"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Grid.Column="1" >
+                    <StackPanel Orientation="Horizontal" Margin="0,0,10.2,0" >
+                        <ListBox ItemsSource="{Binding ListPhotoView}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Hidden"  Width="513" x:Name="listBox" Height="143"  Background="#FFDEE7E1" BorderBrush="{x:Null}">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True">
+                                    </WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <Image  Source="{Binding photo}" Width="120" Height="110" Stretch="Fill"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+                    </StackPanel>
+                    <WrapPanel Margin="5">
+                        <Label Width="120" HorizontalAlignment="Left"  Content="Merek" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.ProducentName}"/>
+                        <Label HorizontalAlignment="Left"  Content="Nama" FontSize="14" FontWeight="Bold" Width="120"/>
+                        <Label HorizontalAlignment="Right"  Content="{Binding SelectedItem.Name}" Width="120"/>
+                    </WrapPanel>
+
+                    <WrapPanel Margin="5">
+                        <Label Width="120" HorizontalAlignment="Left"  Content="Operasi Sistem" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding  SelectedItem.Os}"/>
+                        <Label Width="120" HorizontalAlignment="Left"  Content="RAM" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.Memory}"/>
+                    </WrapPanel>
+                    <WrapPanel Margin="5">
+                        <Label Width="120" HorizontalAlignment="Left"  Content="MadeIn" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.MadeIn}"/>
+                        <Label Width="120" HorizontalAlignment="Left"  Content="Tahun" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.Tahun}"/>
+                    </WrapPanel>
+
+                    <WrapPanel Margin="5">
+                        <Label Width="120" HorizontalAlignment="Left"  Content="Memory Internal" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.Storage}"/>
+                        <Label Width="132" HorizontalAlignment="Left"  Content="Memory Eksternal" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.StorageExternal}"/>
+                    </WrapPanel>
+                    <WrapPanel Margin="5">
+                        <Label Width="120" HorizontalAlignment="Left"  Content="Kamera Depan" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.CameraFront}"/>
+                        <Label Width="125" HorizontalAlignment="Left"  Content="Kamera Belakang" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.CameraBack}"/>
+                    </WrapPanel>
+                    <WrapPanel Margin="5">
+
+                    </WrapPanel>
+                    <WrapPanel Margin="5">
+                        <Label Width="120" HorizontalAlignment="Left"  Content="Layar Sentuh" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.LayarSentuh}"/>
+                        <Label Width="120" HorizontalAlignment="Left"  Content="Price (Rp.)" FontSize="14" FontWeight="Bold"/>
+                        <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.Price}"/>
+
+                    </WrapPanel>
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,0 +1,112 @@
+﻿<Window x:Class="SPKWithTopsis.Forms.LaptopDataView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPKWithTopsis.Forms"
+        mc:Ignorable="d"
+        Title="Data Laptop" Height="652.296" Width="1044.243">
+
+    <Grid Margin="15">
+        <Grid.Background>
+            <ImageBrush ImageSource="/SPKWithTopsis;component/Images/2015-04-30-image-121.png"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="551*"/>
+            <ColumnDefinition Width="426*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Column="0" x:Name="dataGrid" Margin="10,10,9.2,10" Grid.Row="1"
+                  ItemsSource="{Binding SourceView}" SelectedItem="{Binding SelectedItem}"
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" 
+                  Background="{x:Null}" ColumnHeaderHeight="33" BorderBrush="{x:Null}" RowHeight="30" FontSize="16" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ProducentName}" Header="Merk" Width="165"/>
+                <DataGridTextColumn Binding="{Binding Series}" Header="Series" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Nama" Width="200"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border BorderBrush="#FF69EDE1" BorderThickness="1" Margin="2.8,10,0.6,10" Grid.Row="1" Grid.Column="1" Opacity="0.7">
+            <Border.Background>
+                <SolidColorBrush Color="#FFDFF1BE" Opacity="0.3"/>
+            </Border.Background>
+            <StackPanel Margin="0.2,9.2,0.2,9.4"  >
+                <StackPanel Orientation="Horizontal" Height="150">
+                    <ListBox ItemsSource="{Binding ListPhotoView}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Hidden"  Width="429" x:Name="listBox" Height="143"  Background="{x:Null}" BorderBrush="{x:Null}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True">
+                                </WrapPanel>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <Image  Source="{Binding photo}" Width="120" Height="110" Stretch="Fill"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Tambah Photo" Command="{Binding AddPhoto}">
+
+                                </MenuItem>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                </StackPanel>
+                <WrapPanel Margin="5">
+                    <Label Width="90" HorizontalAlignment="Left"  Content="Merek" FontSize="14" FontWeight="Bold" Foreground="#FFFFFEFE"/>
+                    <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.ProducentName}" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Left"  Content="Nama" FontSize="14" FontWeight="Bold" Width="90" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Right"  Content="{Binding SelectedItem.Series}" Width="120" Foreground="#FFFFFEFE"/>
+                </WrapPanel>
+                <WrapPanel Margin="5">
+                    <Label HorizontalAlignment="Left"  Content="Series" FontSize="14" FontWeight="Bold" Width="90" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Right"  Content="{Binding SelectedItem.Series}" Width="120" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Left"  Content="Made In" FontSize="14" FontWeight="Bold" Width="90" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Right"  Content="{Binding SelectedItem.MadeIn}" Width="120" Foreground="#FFFFFEFE"/>
+                </WrapPanel>
+                <WrapPanel Margin="5">
+                    <Label HorizontalAlignment="Left"  Content="Proccessor" FontSize="14" FontWeight="Bold" Width="90" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Right"  Content="{Binding SelectedItem.Proccesor}" Width="120" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Left"  Content="RAM" FontSize="14" FontWeight="Bold" Width="90" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Right"  Content="{Binding SelectedItem.Memory}" Width="120" Foreground="#FFFFFEFE"/>
+                </WrapPanel>
+                <WrapPanel Margin="5">
+
+                    <Label HorizontalAlignment="Left"  Content="VGA" FontSize="14" FontWeight="Bold" Width="90" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Right"  Content="{Binding SelectedItem.VGA}" Width="120" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Left"  Content="Wifi" FontSize="14" FontWeight="Bold" Width="90" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Right"  Content="{Binding SelectedItem.Wifi}" Width="120" Foreground="#FFFFFEFE"/>
+                </WrapPanel>
+
+                <WrapPanel Margin="5">
+                    <Label HorizontalAlignment="Left"  Content="Hardisk" FontSize="14" FontWeight="Bold" Width="90" Foreground="#FFFFFEFE"/>
+                    <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.Hardisk}" Foreground="#FFFFFEFE"/>
+                    <Label Width="100" HorizontalAlignment="Left"  Content="Kamera" FontSize="14" FontWeight="Bold" Foreground="#FFFFFEFE"/>
+                    <Label Width="100" HorizontalAlignment="Right"  Content="{Binding SelectedItem.Kamera}" Foreground="#FFFFFEFE"/>
+                </WrapPanel>
+                <WrapPanel Margin="5">
+                    <Label HorizontalAlignment="Left"  Content="L C D" FontSize="14" FontWeight="Bold" Width="90" Foreground="#FFFFFEFE"/>
+                    <Label Width="120" HorizontalAlignment="Right"  Content="{Binding SelectedItem.LCD}" Foreground="#FFFFFEFE"/>
+                    <Label Width="100" HorizontalAlignment="Left"  Content="Layar Sentuh :" FontSize="14" FontWeight="Bold" Foreground="#FFFFFEFE"/>
+                    <Label Width="100" HorizontalAlignment="Right"  Content="{Binding SelectedItem.LayarSentuh}" Foreground="#FFFFFEFE"/>
+                </WrapPanel>
+                <WrapPanel Margin="5">
+                    <Label HorizontalAlignment="Left"  Content="Price (Rp.)" FontSize="14" FontWeight="Bold" Width="90" Foreground="#FFFFFEFE"/>
+                    <Label HorizontalAlignment="Right"  Content="{Binding SelectedItem.Price}" Width="120" Foreground="#FFFFFEFE"/>
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+        <Button x:Name="button" Command="{Binding AddCommand}" Content="Tambah" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="53" Height="37" Background="#FFE5D3D3"/>
+        <Button Command="{Binding EditCommand}" Content="Edit" HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top" Width="53" Height="37" Background="#FFE5D3D3"/>
+        <Button Command="{Binding DeleteCommand}" Content="Hapus" HorizontalAlignment="Left" Margin="126,10,0,0" VerticalAlignment="Top" Width="53" Height="37" Background="#FFE5D3D3"/>
+    </Grid>
+</Window>

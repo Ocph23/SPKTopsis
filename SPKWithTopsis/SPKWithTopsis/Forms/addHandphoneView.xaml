@@ -1,0 +1,47 @@
+﻿<Window x:Class="SPKWithTopsis.Forms.addHandphoneView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPKWithTopsis.Forms"
+        mc:Ignorable="d"
+        Title="Tambah Handphone" Height="608.262" Width="657.97">
+
+    <Grid Margin="15">
+        <Grid.Background>
+            <ImageBrush ImageSource="/SPKWithTopsis;component/Images/prediksi-desain-iphone-7_25-03-16-18-21.jpg"/>
+        </Grid.Background>
+        <StackPanel HorizontalAlignment="Left"  Margin="140,47,0,0" VerticalAlignment="Top" Width="194">
+            <ComboBox ItemsSource="{Binding ProducentView}" SelectedItem="{Binding ProducentSelected}" DisplayMemberPath="Name" SelectedValue="{Binding ProducentId}" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+            <TextBox Height="25" Margin="3" Text="{Binding Name}"></TextBox>
+            <TextBox Height="25" Margin="3" Text="{Binding MadeIn}"></TextBox>
+            <ComboBox ItemsSource="{Binding Tahuns}" SelectedItem="{Binding OsSelected}" SelectedValue="{Binding Tahun}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+
+            <ComboBox ItemsSource="{Binding OsView}" SelectedItem="{Binding OsSelected}" SelectedValue="{Binding Os}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+
+            <ComboBox ItemsSource="{Binding MemoryView}" SelectedItem="{Binding MemorySelected}" SelectedValue="{Binding Memory}"  DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+            <ComboBox ItemsSource="{Binding StoregeView}" SelectedItem="{Binding StorageSelected}" DisplayMemberPath="Name" SelectedValue="{Binding Storage}" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+            <ComboBox ItemsSource="{Binding StoregeExternalView}" SelectedItem="{Binding StoreageExternalSelected}" DisplayMemberPath="Name" SelectedValue="{Binding StorageExternal}" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+            <ComboBox ItemsSource="{Binding CameraFrontView}" SelectedItem="{Binding CameraFrontSelected}" DisplayMemberPath="Name" SelectedValue="{Binding CameraFront}" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+            <ComboBox ItemsSource="{Binding CameraBackView}" SelectedItem="{Binding CameraBackSelected}" DisplayMemberPath="Name" SelectedValue="{Binding CameraBack}" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
+            <CheckBox Height="25" Margin="3" IsChecked="{Binding LayarSentuh}"></CheckBox>
+            <TextBox Height="25" Margin="3" Text="{Binding Price}"></TextBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="125">
+            <Label Height="25" Margin="3" Content="Produsen"/>
+            <Label Height="25" Margin="3" Content="Nama"/>
+            <Label Height="25" Margin="3" Content="Made In"/>
+            <Label Height="25" Margin="3" Content="Tahun"/>
+            <Label Height="25" Margin="3" Content="Operasi Sistem"/>
+            <Label Height="25" Margin="3" Content="R A M"/>
+            <Label Height="25" Margin="3" Content="Internal Storege"/>
+            <Label Height="25" Margin="3" Content="External Storege"/>
+            <Label Height="25" Margin="3" Content="Camera Depan"/>
+            <Label Height="25" Margin="3" Content="Camera Belakang"/>
+            <Label Height="25" Margin="3" Content="Layar Sentuh"/>
+            <Label Height="25" Margin="3" Content="Harga"/>
+        </StackPanel>
+        <Button Command="{Binding SaveCommand}" Content="Simpan" HorizontalAlignment="Left" Margin="501,475,0,0" VerticalAlignment="Top" Width="75" Height="44" BorderBrush="#FFC6D3B9" BorderThickness="2" Background="#FFDEE7E1"/>
+
+    </Grid>
+</Window>
