@@ -27,6 +27,7 @@ namespace SPKWithTopsis
                 return CanExecuteAction(parameter);
             }
             return true;
+            //test
         }
 
         /// <summary>
