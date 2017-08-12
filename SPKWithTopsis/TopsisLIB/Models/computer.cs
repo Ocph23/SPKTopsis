@@ -12,15 +12,15 @@ namespace TopsisLIB.Models
     [TableName("computers")]
     public class computer: BaseNotifyProperty
     {
-        [PrimaryKey("Id")]
-        [DbColumn("Id")]
+        [PrimaryKey("IdComputer")]
+        [DbColumn("IdComputer")]
         public int Id
         {
             get { return _id; }
             set
             {
                 _id = value;
-                OnPropertyChange("Id");
+                OnPropertyChange("IdComputer");
             }
         }
 

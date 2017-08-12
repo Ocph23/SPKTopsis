@@ -10,15 +10,15 @@ namespace TopsisLIB.Models
     [TableName("users")]
     public class User:Helpers.BaseNotifyProperty
     {
-        [PrimaryKey("Id")]
-        [DbColumn("Id")]
+        [PrimaryKey("IdUser")]
+        [DbColumn("IdUser")]
         public int Id
         {
             get { return _id; }
             set
             {
                 _id = value;
-                OnPropertyChange("Id");
+                OnPropertyChange("IdUser");
             }
         }
 

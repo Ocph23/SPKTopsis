@@ -33,8 +33,8 @@ namespace TopsisLIB
                 ListBobot.Add(new Bobot { A = i.Code, C = "C3", Value = i.Ram});
                 ListBobot.Add(new Bobot { A = i.Code, C = "C4", Value = i.CamFront});
                 ListBobot.Add(new Bobot { A = i.Code, C = "C5", Value = i.CamBack});
-                ListBobot.Add(new Bobot { A = i.Code, C = "C5", Value = i.IOS});
-                ListBobot.Add(new Bobot { A = i.Code, C = "C5", Value = i.Android});
+                ListBobot.Add(new Bobot { A = i.Code, C = "C6", Value = i.IOS});
+                ListBobot.Add(new Bobot { A = i.Code, C = "C7", Value = i.Android});
                 n++;
 
             }

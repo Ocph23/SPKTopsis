@@ -11,15 +11,15 @@ namespace TopsisLIB.Models
     [TableName("handphones")]
     public class handphone: BaseNotifyProperty
     {
-        [PrimaryKey("Id")]
-        [DbColumn("Id")]
+        [PrimaryKey("IdHandphone")]
+        [DbColumn("IdHandphone")]
         public int Id
         {
             get { return _id; }
             set
             {
                 _id = value;
-                OnPropertyChange("Id");
+                OnPropertyChange("IdHandphone");
             }
         }
 

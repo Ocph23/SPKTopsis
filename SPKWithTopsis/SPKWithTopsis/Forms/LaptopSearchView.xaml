@@ -44,20 +44,42 @@
                     <ColumnDefinition Width="179*"/>
                     <ColumnDefinition Width="133*"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid Grid.Column="0"  x:Name="dataGrid"  
-                  ItemsSource="{Binding SourceView}" SelectedItem="{Binding SelectedItem}"
+                <StackPanel Grid.Column="0">
+                    <Expander Header="Hasil" Height="auto"  Foreground="White"  IsExpanded="True" Margin="10">
+                        <DataGrid   x:Name="dataGrid"  SelectedItem="{Binding SelectedItem}"
+                  ItemsSource="{Binding SourceView}" 
                   AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
-                          RowHeight="28" Background="{x:Null}" ColumnHeaderHeight="35" Height="202" VerticalAlignment="Top" Margin="0,0,12,0" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Name}" Header="Nama" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding ProducentName}" Header="Produsen" Width="150"/>
-                        <DataGridTextColumn Binding="{Binding Series}" Header="Series" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding LCD}" Header="LCD" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding Price}" Header="Harga" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding Score}" Header="Score" Width="100"/>
+                          RowHeight="28" Background="{x:Null}" ColumnHeaderHeight="35" Height="200" VerticalAlignment="Top" Margin="0,0,12,0" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Nama" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding ProducentName}" Header="Produsen" Width="150"/>
+                                <DataGridTextColumn Binding="{Binding Series}" Header="Series" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding LCD}" Header="LCD" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Price}" Header="Harga" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Score}" Header="Score" Width="100"/>
 
-                    </DataGrid.Columns>
-                </DataGrid>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Expander>
+                    <Expander Header="Score" Foreground="White" Height="auto" Margin="10">
+                        <DataGrid 
+                  ItemsSource="{Binding SourceView}" 
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                          RowHeight="28" Background="{x:Null}" ColumnHeaderHeight="35" Height="200" VerticalAlignment="Top" Margin="0,0,12,0" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Nama" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Score}" Header="Harga" Width="100"/>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Expander>
+
+
+
+
+
+                </StackPanel>
+            
                 <StackPanel  Grid.Column="1" Visibility="{Binding ViewDetails,UpdateSourceTrigger=PropertyChanged}" >
                     <StackPanel Orientation="Horizontal" >
                         <ListBox ItemsSource="{Binding ListPhotoView}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Hidden"  Width="530" x:Name="listBox" Height="143" BorderBrush="{x:Null}" Background="#FFDEE7E1">

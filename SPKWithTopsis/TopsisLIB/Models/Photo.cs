@@ -12,15 +12,15 @@ namespace TopsisLIB.Models
     [TableName("photos")]
     public class Photo: BaseNotifyProperty
     {
-        [PrimaryKey("Id")]
-        [DbColumn("Id")]
+        [PrimaryKey("IdPhoto")]
+        [DbColumn("IdPhoto")]
         public int Id
         {
             get { return _id; }
             set
             {
                 _id = value;
-                OnPropertyChange("Id");
+                OnPropertyChange("IdPhoto");
             }
         }
 

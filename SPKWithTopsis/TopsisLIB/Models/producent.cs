@@ -11,14 +11,14 @@ namespace TopsisLIB.Models
      [TableName("producent")] 
      public class producent : BaseNotifyProperty
     {
-          [PrimaryKey("Id")] 
-          [DbColumn("Id")] 
+          [PrimaryKey("IdProducent")] 
+          [DbColumn("IdProducent")] 
           public int Id 
           { 
                get{return _id;} 
                set{ 
                       _id=value; 
-                     OnPropertyChange("Id");
+                     OnPropertyChange("IdProducent");
                      }
           } 
 

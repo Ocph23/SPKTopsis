@@ -46,19 +46,31 @@
                     <ColumnDefinition Width="179*"/>
                     <ColumnDefinition Width="133*"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid Grid.Column="0" x:Name="dataGrid"  
+                <StackPanel Grid.Column="0">
+                    <Expander Header="HASIL" Height="auto" Margin="10" IsExpanded="True">
+                        <DataGrid Grid.Column="0" x:Name="dataGrid"  
                   ItemsSource="{Binding SourceView}" SelectedItem="{Binding SelectedItem}"
                   AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="10,10,9.4,10.2" RowHeight="28" Background="{x:Null}" ColumnHeaderHeight="35" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding ProducentName}" Header="Merek" Width="120"/>
-                        <DataGridTextColumn Binding="{Binding Name}" Header="Nama" Width="120"/>
-                        <DataGridTextColumn Binding="{Binding Os}" Header="OS" Width="120"/>
-                        <DataGridTextColumn Binding="{Binding Memory}" Header="RAM" Width="120"/>
-
-                        <DataGridTextColumn Binding="{Binding Score}" Header="Score" Width="120"/>
-
-                    </DataGrid.Columns>
-                </DataGrid>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding ProducentName}" Header="Merek" Width="120"/>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Nama" Width="120"/>
+                                <DataGridTextColumn Binding="{Binding Os}" Header="OS" Width="120"/>
+                                <DataGridTextColumn Binding="{Binding Memory}" Header="RAM" Width="120"/>
+                                <DataGridTextColumn Binding="{Binding Score}" Header="Score" Width="120"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Expander>
+                    <Expander Header="SCORE" Height="auto" Margin="10">
+                        <DataGrid ItemsSource="{Binding SourceView}"
+                         AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="10,10,9.4,10.2" RowHeight="28" Background="{x:Null}" ColumnHeaderHeight="35" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Nama" Width="120" />
+                                <DataGridTextColumn Binding="{Binding Score}" Header="Score" Width="120" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Expander>
+                </StackPanel>
+             
                 <StackPanel Grid.Column="1" >
                     <StackPanel Orientation="Horizontal" Margin="0,0,10.2,0" >
                         <ListBox ItemsSource="{Binding ListPhotoView}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Hidden"  Width="513" x:Name="listBox" Height="143"  Background="#FFDEE7E1" BorderBrush="{x:Null}">

@@ -63,6 +63,8 @@ namespace SPKWithTopsis.ViewModels
             //data
             this.Source = new ObservableCollection<computer>();
             this.SourceView = (CollectionView)CollectionViewSource.GetDefaultView(this.Source);
+            Alternatives = new List<Alternatif>();
+            AlternativeSourceView = (CollectionView)CollectionViewSource.GetDefaultView(this.Alternatives);
             this.Clear();
         }
 
@@ -73,7 +75,7 @@ namespace SPKWithTopsis.ViewModels
                 this.SelectedItem = null;
             }
             this.Source.Clear();
-            this.Alternatives = new List<Alternatif>();
+            Alternatives.Clear();
             IDataCollection<computer> pr = new  ComputerCollections();
 
             var datas = pr.GetData();
@@ -96,6 +98,7 @@ namespace SPKWithTopsis.ViewModels
 
             collection.Refresh();
             int id = 1;
+            Alternatives.Clear();
             foreach(var item in collection)
             {
                 
@@ -124,6 +127,7 @@ namespace SPKWithTopsis.ViewModels
             }
 
             SourceView.Refresh();
+            AlternativeSourceView.Refresh();
 
         }
 
@@ -200,6 +204,7 @@ namespace SPKWithTopsis.ViewModels
 
         public CommandHandler SearchCommand { get; set; }
         public CollectionView SourceView { get; private set; }
+        public CollectionView AlternativeSourceView { get; private set; }
         public ObservableCollection<computer> Source { get; private set; }
         public List<Alternatif> Alternatives { get;  set; }
         public List<Photo> ListPhoto { get; private set; }

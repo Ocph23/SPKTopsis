@@ -67,6 +67,7 @@ namespace SPKWithTopsis.ViewModels
             SourceView = (CollectionView)CollectionViewSource.GetDefaultView(this.Source);
             SearchCommand = new CommandHandler { CanExecuteAction = SearchValiation, ExecuteAction=x=> SearchAction() };
             Alternatives = new List<AlternativeHandPhone>();
+            AlternativeSourceView = (CollectionView)CollectionViewSource.GetDefaultView(Alternatives);
             Datas = handphoneCollection.GetData();
 
             collection  = (CollectionView)CollectionViewSource.GetDefaultView(Datas);
@@ -83,11 +84,14 @@ namespace SPKWithTopsis.ViewModels
             }
             set
             {
-
-                _selected = value;
-                var a = Task.Factory.StartNew(() => GetPhoto(value.Id));
-                this.CompleteGetPhoto(a);
-                OnPropertyChange("SelectedItem");
+                if(value!=null)
+                {
+                    _selected = value;
+                    var a = Task.Factory.StartNew(() => GetPhoto(value.Id));
+                    this.CompleteGetPhoto(a);
+                    OnPropertyChange("SelectedItem");
+                }
+             
             }
         }
 
@@ -134,7 +138,7 @@ namespace SPKWithTopsis.ViewModels
         private void SearchAction()
         {
             Source.Clear();
-            this.Alternatives = new List<AlternativeHandPhone>();
+            this.Alternatives.Clear();
             collection.Refresh();
             int id = 1;
 
@@ -146,12 +150,12 @@ namespace SPKWithTopsis.ViewModels
 
                 if (this.Os != string.Empty)
                 {
-                    if (this.Os == "IOS" && item.Os == "IOS")
+                    if (item.Os == "IOS")
                     {
                         ios = dal.IOSs.Where(O => O.Name == "Ya").FirstOrDefault().Rangking;
                     }
 
-                    if (this.Os == "Android" && item.Os == "Android")
+                    if (item.Os == "Android")
                     {
                         android = dal.Androids.Where(O => O.Name == "Ya").FirstOrDefault().Rangking;
                     }
@@ -192,6 +196,7 @@ namespace SPKWithTopsis.ViewModels
                 }
 
                 SourceView.Refresh();
+                AlternativeSourceView.Refresh();
             }
             else
                 MessageBox.Show("Data Tidak Ditemukan");
@@ -210,6 +215,7 @@ namespace SPKWithTopsis.ViewModels
         //Search
 
         public CollectionView SourceView { get; private set; }
+        public CollectionView AlternativeSourceView { get; private set; }
         public ObservableCollection<handphone> Source { get; set; }
         public List<AlternativeHandPhone> Alternatives { get; set; }
     }
