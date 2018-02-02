@@ -68,7 +68,7 @@
                           RowHeight="28" Background="{x:Null}" ColumnHeaderHeight="35" Height="200" VerticalAlignment="Top" Margin="0,0,12,0" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Name}" Header="Nama" Width="100"/>
-                                <DataGridTextColumn Binding="{Binding Score}" Header="Harga" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Score}" Header="Score" Width="100"/>
 
                             </DataGrid.Columns>
                         </DataGrid>
